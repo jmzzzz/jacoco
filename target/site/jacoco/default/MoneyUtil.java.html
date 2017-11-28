@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MoneyUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">MoneyUtil.java</span></div><h1>MoneyUtil.java</h1><pre class="source lang-java linenums">import java.math.BigDecimal;
+
+<span class="fc" id="L3">public class MoneyUtil {</span>
+
+
+    /**
+     * &lt;pre&gt;
+     * 功能说明 : 安全转换double类型, 将单位元的钱转为分
+     *     如: 19.9(元), 最终结果: 1990(分)
+     * &lt;/pre&gt;
+     *
+     * @param money 金额(元)
+     * @return
+     */
+    public static int getFenMoney(String money) {
+<span class="fc" id="L16">        BigDecimal hundred = new BigDecimal(100);</span>
+<span class="fc" id="L17">        BigDecimal decimalMoney = new BigDecimal(money);</span>
+<span class="fc" id="L18">        return decimalMoney.multiply(hundred).intValue();</span>
+    }
+
+
+    /**
+     * 功能说明 : 获取单价, 保留小数点两位数
+     *
+     * @param money 总金额(元)
+     * @param quantity 数量
+     * @return
+     */
+    public static double getUnitMoney(String money, int quantity) {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (&quot;50&quot;.equals(money)) {</span>
+<span class="fc" id="L31">            System.out.println(&quot;branch1&quot;);</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        }else if (&quot;60&quot;.equals(money)) {</span>
+<span class="fc" id="L33">            System.out.println(&quot;branch2&quot;);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        }else if (&quot;70&quot;.equals(money)) {</span>
+<span class="fc" id="L35">            System.out.println(&quot;branch3&quot;);</span>
+        }else {
+<span class="fc" id="L37">            System.out.println(&quot;other branch&quot;);</span>
+        }
+<span class="fc" id="L39">        BigDecimal decimalMoney = new BigDecimal(money);</span>
+<span class="fc" id="L40">        BigDecimal unitMoney = decimalMoney.divide(new BigDecimal(quantity), 2, BigDecimal.ROUND_HALF_UP);</span>
+
+<span class="fc" id="L42">        return unitMoney.doubleValue();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>
